@@ -1,0 +1,31 @@
+#ifndef INCLUDED_SLIST_
+#define INCLUDED_SLIST_
+
+#include <stdint.h>
+#include <stdio.h>
+
+typedef struct _node_ Node;
+typedef struct _slist_ List;
+
+struct _node_ {
+    int32_t data;
+    Node* next;
+};
+
+struct _slist_ {
+    Node* head;
+    Node* tail;
+    uint32_t length;
+};
+
+List* slist_new();
+List* slist_free(List* list);
+uint32_t slist_length(const List* list);
+List* slist_add_head(List* list, int32_t data);
+List* slist_add_tail(List* list, int32_t data);
+List* slist_delete_head(List* list);
+List* slist_delete_tail(List* list);
+List* slist_sort(List* list);
+void slist_print(const List* list);
+
+#endif
